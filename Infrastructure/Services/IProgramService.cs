@@ -2,7 +2,6 @@
 using AutoMapper;
 using Domain.DTOs;
 using Domain.Entities;
-using System.Security.Cryptography.X509Certificates;
 
 namespace Infrastructure.Services
 {
@@ -28,9 +27,12 @@ namespace Infrastructure.Services
         {
             var newProgram = _mapper.Map<Program>(program);
 
-            newProgram.RequiredSkills = string.Join(',',program.RequiredSkills);
+            if (program.RequiredSkills is not null)
+                newProgram.RequiredSkills = string.Join(',', program.RequiredSkills);
 
-            newProgram.ProgramBenefits = string.Join(',', program.ProgramBenefits);
+
+            if (program.ProgramBenefits is not null)
+                newProgram.ProgramBenefits = string.Join(',', program.ProgramBenefits);
 
             await _programRepository.AddAsync(newProgram);
 
