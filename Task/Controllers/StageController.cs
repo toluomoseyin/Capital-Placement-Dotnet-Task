@@ -1,6 +1,5 @@
 ﻿using Domain.DTOs;
 using Infrastructure.Services;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Task.Controllers
@@ -20,9 +19,9 @@ namespace Task.Controllers
 
         public async Task<IActionResult> AddStage(StageDTO stage)
         {
-           var id =  await _stageService.AddAsync(stage);
+            var id = await _stageService.AddAsync(stage);
 
-            return Ok(new {StegeId = id});
+            return Ok(new { StegeId = id });
         }
 
 
@@ -41,7 +40,7 @@ namespace Task.Controllers
 
         public async Task<IActionResult> DeleteQuestion(string stageId)
         {
-          var stage =  await _stageService.GetAsync(stageId);
+            var stage = await _stageService.GetAsync(stageId);
 
             return Ok(stage);
         }
