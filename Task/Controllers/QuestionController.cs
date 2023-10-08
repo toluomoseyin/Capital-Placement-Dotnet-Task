@@ -19,8 +19,9 @@ namespace Task.Controllers
 
         public async Task<IActionResult> AddQuestion(QuestionDTO question)
         {
-            await _questionService.AddQuestionAsync(question);
-            return Ok();
+           var  questionId =  await _questionService.AddQuestionAsync(question);
+
+            return Ok(new {QuestionId = questionId});
         }
 
 

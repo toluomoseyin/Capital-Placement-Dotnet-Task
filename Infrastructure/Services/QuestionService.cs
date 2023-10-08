@@ -8,7 +8,7 @@ namespace Infrastructure.Services
 {
     public interface IQuestionService
     {
-        Task AddQuestionAsync(QuestionDTO question);
+        Task<string> AddQuestionAsync(QuestionDTO question);
         Task<List<Question>> GetQuestionByProgramIdAsync(string programId);
         Task DeleteAsync(string questionId);
     }
@@ -23,12 +23,16 @@ namespace Infrastructure.Services
             _mapper = mapper;
         }
 
-        public async Task AddQuestionAsync(QuestionDTO question)
+        public async Task<string> AddQuestionAsync(QuestionDTO question)
         {
             var newQuestion = _mapper.Map<Question>(question);
 
-            newQuestion.QuestionSpecifics= question.QuestionSpecifics.ToJsonString();
+            if(question.QuestionSpecifics is not null)
+                newQuestion.QuestionSpecifics= question.QuestionSpecifics.ToJsonString();
+
            await _questionRepository.AddAsync(newQuestion);
+
+            return newQuestion.id.ToString();
         }
 
         public async Task DeleteAsync(string questionId)
