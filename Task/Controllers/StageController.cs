@@ -37,7 +37,7 @@ namespace Task.Controllers
         }
 
 
-        [HttpGet("stageId")]
+        [HttpGet("{stageId}")]
 
         public async Task<IActionResult> DeleteQuestion(string stageId)
         {
