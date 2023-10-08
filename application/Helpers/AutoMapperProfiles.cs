@@ -8,8 +8,12 @@ namespace application.Helpers
     {
         public AutoMapperProfiles()
         {
-            CreateMap<ProgramDTO, Program>();
+            CreateMap<ProgramDTO, Program>().ForMember(x => x.RequiredSkills, x => x.Ignore())
+                .ForMember(x => x.ProgramBenefits, x => x.Ignore());
+            CreateMap<Program, ReturnProgramDTO>().ForMember(x => x.RequiredSkills, x => x.Ignore())
+                .ForMember(x => x.ProgramBenefits, x => x.Ignore());
             CreateMap<QuestionDTO, Question>().ForMember(x=>x.QuestionSpecifics,x=>x.Ignore());
+            CreateMap<StageDTO, Stage>();
         }
     }
 }

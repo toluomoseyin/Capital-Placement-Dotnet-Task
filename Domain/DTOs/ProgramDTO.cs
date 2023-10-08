@@ -13,8 +13,8 @@ namespace Domain.DTOs
         public string ProgramSummary { get; set; }
 
         public string ProgramDescription { get; set; }
-        public string RequiredSkills { get; set; }
-        public string ProgramBenefits { get; set; }
+        public List<string> RequiredSkills { get; set; }
+        public List<string> ProgramBenefits { get; set; }
         public string ApplicationCriteria { get; set; }
 
         public ProgramType ProgramType { get; set; }

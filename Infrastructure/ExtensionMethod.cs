@@ -19,6 +19,7 @@ namespace Infrastructure
 
           
             services.AddScoped<IProgramService, ProgramService>();
+            services.AddScoped<IStageService, StageService>();
             services.AddScoped<IQuestionService, QuestionService>();
             services.AddScoped<IStageRepository, StageRepository>();
             services.AddScoped<IProgramService, ProgramService>();
